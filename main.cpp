@@ -135,7 +135,7 @@ void init()
   {
     //program_id_quad = glhelper::create_program_from_file("shaders/quad.vs", "shaders/quad.fs");
     program_id_quad = glhelper::create_program_from_file("shaders/basic.vs", "shaders/basic.gs", "shaders/basic.fs");
-    Mesh quad = Mesh::create_grid(2);
+    Mesh quad = Mesh::create_grid(512);
     quad.apply_matrix(glm::mat4(
                           1., 0., 0., 0.,
                           0., 1., 0., 0.,

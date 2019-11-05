@@ -18,8 +18,8 @@ vec3 deltapos2;
 vec3 deltauv1;
 vec3 deltauv2;
 float r;
-out vec3 tangent;
-out vec3 bitangent;
+vec3 tangent;
+vec3 bitangent;
 out mat3 tbn;
 out mat4 tbn_4;
 
@@ -58,14 +58,13 @@ for (int i = 0; i < 3; i++)
 	{
 	//normal_tangent = texture(textureSampler, uv_pos[i]).rgb *  2 -1;
 	//vec4 no = normalFromHeight(uv_pos[i]);
-	
+	/*
 	tbn = transpose(mat3(
         normalize(tangent),
         normalize(bitangent),
         normalize(n_pos[i])
         ));
-        tbn_4 = mat4(tbn);
-	
+        tbn_4 = mat4(tbn);*/
 	  gl_Position = MVP * vec4(v_pos[i] , 1.0);
 	  uv = uv_pos[i];
 	  pos = v_pos[i];
@@ -76,7 +75,11 @@ for (int i = 0; i < 3; i++)
 	  EmitVertex();
 	}
 	//n = tbn * n_pos[0];
-	
+	tbn = transpose(mat3(
+		normalize(tangent),
+		normalize(bitangent),
+		normalize(n_pos[0])
+		));
 	EndPrimitive();
 }
 
