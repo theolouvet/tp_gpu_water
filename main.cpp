@@ -225,6 +225,7 @@ static void display_callback()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glViewport(0, 0, cam2.width(), cam2.height());
     glUseProgram(program_id);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture_id);
     glBindVertexArray(VAO);
     GLint mvp_id = glGetUniformLocation(program_id, "MVP"); 
@@ -242,6 +243,7 @@ static void display_callback()
                0., 0., 0., 1.)*cam2.view()  ;
    
     glUseProgram(program_id_background);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture_id_background);
     glBindVertexArray(VAO_background);
     GLint mvp_id = glGetUniformLocation(program_id_background, "MVP"); 
